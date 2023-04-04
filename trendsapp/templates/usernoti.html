@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+          #k{
+            float:left;
+        }
+        #l{
+          background-color:black;
+        color:white;
+        padding:15px;
+      }
+   .i{
+        text-decoration: none;
+        color:white;
+      }
+      .i:hover{color:white;}
+      hr{color:white;}
+
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/4f163060e5.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+       <div>
+    <div id="l">
+      <i id="k" class="fa-solid fa-bars"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft"></i>
+  <div class="offcanvas offcanvas-end text-white" style="background-color: rgb(48, 47, 47);" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
+        <div class="offcanvas-header">
+          <h5 id="offcanvasLeftLabel">{{username}}</h5>
+          <button type="button" class="btn-close text-reset bg-light" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+         <ul type="none">
+                  <li> <a href="http://127.0.0.1:8000/trendsapp/userprofile/" class="i"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;User profile</a></li><hr><br>
+             <li> <a href="http://127.0.0.1:8000/trendsapp/home/" class="i"><i class="fa-solid fa-house"></i>&nbsp;&nbsp;Home</a></li><hr><br>
+                  <li><a href="http://127.0.0.1:8000/trendsapp/wishlistdisplay/" class="i"><i class="fa-solid fa-heart"></i>&nbsp;&nbsp;My wishlist</a></li><hr><br>
+                  <li><a href="http://127.0.0.1:8000/trendsapp/cartdisplay/" class="i"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;My cart</a></li><hr><br>
+               <li><a href="http://127.0.0.1:8000/trendsapp/logout/" class="i"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;Logout</a></li><br>
+
+                  </ul>
+        </div>
+      </div>
+      <br>
+    </div>
+           <br><br>
+<div class="container">
+  <div class="row">
+      {% for i,j,k in mylist %}
+
+      <h3>{{i}}</h3>
+      <p>{{j}}</p>
+
+      {% endfor %}
+  </div>
+</div>
+</body>
+</html>

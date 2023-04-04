@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <style>
+
+      .navbar{
+             background-color:rgb(110, 105, 105);
+            }
+   #h{
+        color: black;
+      }
+      #l{
+          height: 400px;
+          width:500px;
+          margin-left: 150px;
+          float:left;
+        }
+
+        #m{
+          height: 400px;
+          width:500px;
+          margin-right:150px;
+          float:right;
+        }
+        .p{
+          text-decoration: none;
+          color:black;
+        }
+        .x{
+          text-decoration: none;
+        }
+.p:hover{
+color:grey;}
+
+.card-img-top:hover{
+  opacity: .50;
+  cursor:pointer;
+}
+    </style>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/4f163060e5.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+      <nav class="navbar navbar-expand-lg fixed-top ">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#" id="h" ><i class="fa-solid fa-leaf"></i>&nbsp;𝐓𝐫𝐞𝐧𝐝𝐬</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" style="color:white"><i class="fa-solid fa-bars"></i></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                <a class="nav-link text-light" href="http://127.0.0.1:8000/trendsapp/home/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="http://127.0.0.1:8000/trendsapp/women/">Womens</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="http://127.0.0.1:8000/trendsapp/men/">Mens</a>
+              </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Login
+                    </a>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="http://127.0.0.1:8000/trendsapp/userlogin/">User login</a></li>
+                  <li><a class="dropdown-item" href="http://127.0.0.1:8000/trendsapp/shoplogin/">Shop login</a></li>
+                    <li><a class="dropdown-item" href="http://127.0.0.1:8000/admin/">Admin login</a></li>
+                </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Register
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="http://127.0.0.1:8000/trendsapp/shopregister/">Shop Register</a></li>
+                      <li><a class="dropdown-item" href="http://127.0.0.1:8000/trendsapp/userregister/">User Register</a></li>
+                    </ul>
+                  </li>
+            </ul>
+            <form class="d-flex">
+           <a  class="nav-link text-light" href="http://127.0.0.1:8000/trendsapp/userprofile/"><i class="fa-solid fa-user fa-1x"></i></a>
+              <a  class="nav-link text-light" href="http://127.0.0.1:8000/trendsapp/cartdisplay/"><i class="fa-solid fa-cart-shopping fa-1x"></i></a>
+              <a  class="nav-link text-light" href="http://127.0.0.1:8000/trendsapp/wishlistdisplay/"><i class="fa-solid fa-heart fa-1x"></i></a>
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" >
+                <button class="btn text-light"><i class=" fa-sharp fa-solid fa-magnifying-glass fa-1x"></i></button>
+
+            </form>
+          </div>
+        </div>
+</nav>
+<br><br><br>
+
+   <div>
+        <img src="{% static 'trendsapp/images/img49.jpg' %}" style="width:100%">
+  </div>
+  <br>
+  <div class="container">
+    <div class="row">
+        <h3></h3>
+        <div class="col">
+                <img src="{% static 'trendsapp/images/img37.jpg' %}" style="height:200px;width:200px;border-radius:50%" class="card-img" alt="...">
+                <h4>Mens clothing</h4>
+              </div>
+        <div class="col">
+               <img src="{% static 'trendsapp/images/img67.jpg' %}" style="height:200px;width:200px;border-radius:50%"  class="card-img" alt="...">
+            <h4>Womens clothing</h4>
+            </div>
+        <div class="col">
+                <img src="{% static 'trendsapp/images/w11.jpg' %}" style="height:200px;width:200px;border-radius:50%" class="card-img" alt="...">
+                <h4>Shoes</h4>
+              </div>
+        <div class="col">
+                <img src="{% static 'trendsapp/images/m68.jpg' %}" style="height:200px;width:200px;border-radius:50%"  class="card-img" alt="...">
+                <h4>Bags</h4>
+        </div>
+        <div class="col">
+          <img src="{% static 'trendsapp/images/m30.jpg' %}" style="height:200px;width:200px;border-radius:50%"  class="card-img" alt="...">
+          <h4>Watches</h4>
+  </div>
+    </div>
+  </div>
+  <center>
+
+  <div class="container-fluid p-5">
+    <div class="row">
+      <div class="col-lg-4 col-md-8 col-sm-12">
+      <div class="card" style="width: 20rem;">
+        <img src="{% static 'trendsapp/images/img46.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h4 class="card-title">Versace</h4>
+          <p class="card-text">Oversized denim jacket</p>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-8 col-sm-12">
+      <div class="card" style="width: 20rem;">
+        <img src="{% static 'trendsapp/images/img47.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h4 class="card-title">Zara</h4>
+          <p class="card-text">Loose-fit round neck sweater</p>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-8 col-sm-12">
+      <div class="card" style="width:20rem;">
+        <img src="{% static 'trendsapp/images/i4.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h4 class="card-title">Prada</h4>
+          <p class="card-text">Short dungarees with pockets</p>
+
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+  </center>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active bg-secondary" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="bg-secondary" aria-label="Slide 2"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{% static 'trendsapp/images/img35.jpg' %}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'trendsapp/images/img36.jpg' %}" class="d-block w-100" alt="...">
+        </div>
+
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden" >Previous</span>
+      </button>
+      <button class="carousel-control-next " type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <br>
+    <center>
+      <div class="container-fluid">
+        <div class="row p-2 ">
+          <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card" style="width: 18rem;">
+            <img src="{% static 'trendsapp/images/img41.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h4 class="card-title">Lacoste</h4>
+              <p class="card-text">Belted chino trousers polo</p>
+            </div>
+          </div>
+        </div>
+          <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card" style="width: 18rem;">
+            <img src="{% static 'trendsapp/images/img64.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h4 class="card-title">Levi's</h4>
+              <p class="card-text">Sweater with slogan</p>
+            </div>
+          </div>
+        </div>
+          <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card" style="width: 18rem;">
+            <img src="{% static 'trendsapp/images/img43.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h4 class="card-title">Zara</h4>
+              <p class="card-text">Grown cotton T-shirt with print</p>
+            </div>
+          </div>
+        </div>
+          <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card" style="width: 18rem;">
+            <img src="{% static 'trendsapp/images/img32.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h4 class="card-title">Prada</h4>
+              <p class="card-text">Skinny mid-rise trousers</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </center>
+  <br>
+  <center>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6 col-md-8 col-sm-12">
+      <div class="card" style="width: 25rem;">
+        <img src="{% static 'trendsapp/images/img31.jpg' %}" class="card-img-top" alt="...">
+
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-md-8 col-sm-12">
+      <div class="card" style="width:25rem;">
+        <img src="{% static 'trendsapp/images/img38.jpg' %}" class="card-img-top" alt="...">
+
+      </div>
+    </div>
+    </div>
+    </div>
+  </center>
+  <br>
+  <center>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-8 col-sm-12">
+        <div class="card" style="width: 20rem;">
+          <div class="card-title">
+            <h4>Ear buds</h4>
+          </div>
+          <div class="card-body">
+            <img src="{% static 'trendsapp/images/a15.jpg' %}" style="height:200px;width:200px;" class="card-img-top" alt="...">
+
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-8 col-sm-12">
+        <div class="card" style="width: 20rem;">
+          <div class="card-title">
+            <h4>glasses</h4>
+          </div>
+          <div class="card-body">
+            <img src="{% static 'trendsapp/images/img56.jpg' %}" style="height:200px;width:200px;" class="card-img-top" alt="...">
+
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-8 col-sm-12">
+        <div class="card" style="width: 20rem;">
+          <div class="card-title">
+            <h4>Mobile covers</h4>
+          </div>
+          <div class="card-body">
+            <img src="{% static 'trendsapp/images/img62.jpg' %}" style="height:200px;width:200px;" class="card-img-top" alt="...">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</center>
+<br>
+<br>
+<div class="container">
+  <center>
+  <video controls height="400px" width="900px">
+    <source src="{% static 'trendsapp/videos/video2.mp4' %}">
+  </video>
+</center>
+</div>
+<br>
+<div class="container">
+  <div class="row">
+      <h3>Mens wears</h3>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card" style="width: 18rem">
+              <img src="{% static 'trendsapp/images/m24.jpg' %}"class="card-img" alt="...">
+
+            </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card" style="width: 18rem">
+              <img src="{% static 'trendsapp/images/m25.jpg' %}" class="card-img" alt="...">
+
+            </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card" style="width: 18rem">
+              <img src="{% static 'trendsapp/images/m26.jpg' %}" class="card-img" alt="...">
+
+            </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card" style="width: 18rem">
+              <img src="{% static 'trendsapp/images/m27.jpg' %}" class="card-img" alt="...">
+
+            </div>
+      </div>
+  </div>
+</div>
+<br>
+<br>
+<div>
+  <img src="{% static 'trendsapp/images/i1.jpg' %}" style="width:100%">
+</div>
+<br>
+<div class="container">
+  <div class="row">
+      <h3></h3>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card" style="width: 18rem">
+              <img src="{% static 'trendsapp/images/img19.jpg' %}" class="card-img" alt="...">
+
+            </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card" style="width: 18rem">
+              <img src="{% static 'trendsapp/images/i2.jpg' %}" class="card-img" alt="...">
+
+            </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card" style="width: 18rem">
+              <img src="{% static 'trendsapp/images/img21.jpg' %}" class="card-img" alt="...">
+
+            </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card" style="width: 18rem">
+              <img src="{% static 'trendsapp/images/img22.jpg' %}" class="card-img" alt="...">
+
+            </div>
+      </div>
+  </div>
+</div>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+      <h3>Women wears</h3>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card" style="width: 18rem">
+              <img src="{% static 'trendsapp/images/img66.jpg' %}" class="card-img" alt="...">
+            </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card" style="width: 18rem">
+              <img src="{% static 'trendsapp/images/img67.jpg' %}" class="card-img" alt="...">
+            </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card" style="width: 18rem">
+              <img src="{% static 'trendsapp/images/i3.jpg' %}" class="card-img" alt="...">
+            </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card" style="width: 18rem">
+              <img src="{% static 'trendsapp/images/img69.jpg' %}" class="card-img" alt="...">
+            </div>
+      </div>
+  </div>
+</div>
+</center>
+<br>
+<br>
+<div class="container-fluid p-5" style="background-color: whitesmoke;">
+  <center>
+    <i class="fa-regular fa-envelope fa-3x" style="color:black"></i>
+    <h2 class="text-dark">Subscription</h2>
+
+     <input type="email" class="form-control  input-group bg-lsecondary" placeholder="Your email here"><br><br>
+    <a href="http://127.0.0.1:8000/trendsapp/userregister/" class="btn" style="background-color:black;color:white">Subscribe</a>
+    <br><br>
+    <p class="text-dark">By entering your email,you are accepting our <a class="x text-secondary" href="terms.html">Terms of USe</a> and <a class="x text-secondary" href="privacy.html">Privacy Policy</a></p>
+  </center>
+  <hr>
+
+  <div class="container-fluid row"  style="background-color:whitesmoke;color:black;" >
+
+    <div class="col-lg-3 col-md-6 col-sm-12" id="h">
+      <h2>Useful links</h2>
+      <ul type="none">
+        <li><a href="http://127.0.0.1:8000/trendsapp/home/"  class="p">Home</a></li>
+          <br>
+        <li><a href="http://127.0.0.1:8000/trendsapp/womens/"  class="p">Womens</a></li>
+          <br>
+        <li><a href="http://127.0.0.1:8000/trendsapp/mens/"  class="p">Mens</a></li>
+      </ul>
+    </div>
+
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <h2>Address</h2>
+      <p>London, UK<br>
+        998 13h Street, Office 436<br>
+        Harlo 61466<br>
+        +(21) 255 999 8888<br>
+        trends@gmail.com</p>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <ul type="none">
+        <h2>Information</h2>
+        <li><a class="p" href="#">Terms and Conditions</a></li>
+         <li><a class="p" href="#">Shipping Policy</a></li>
+         <li><a class="p" href="#">Cancellation Policy</a></li>
+         <li><a class="p" href="#">Privacy Policy</a></li>
+       </ul>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+        <h2>Payment methods</h2>
+        <br>
+        <i class="fa-brands fa-cc-mastercard fa-2x"></i>&nbsp;&nbsp;&nbsp;
+        <i class="fa-brands fa-cc-paypal fa-2x"></i>&nbsp;&nbsp; &nbsp;
+        <i class="fa-brands fa-cc-visa fa-2x"></i>&nbsp;&nbsp;&nbsp;
+        <i class="fa-brands fa-cc-discover fa-2x"></i><br><br>
+
+    </div>
+    <br>
+  <br>
+    <hr>
+    <center><p class="pb-1 text-dark"> © 2023 Trends E-Retail Pvt. Ltd. All Rights Reserved.</p>
+      <div class=" footer container" >
+      <i class="fa-brands fa-facebook fa-2x"></i>&nbsp;&nbsp;&nbsp;
+      <i class="fa-brands fa-twitter fa-2x"></i>&nbsp;&nbsp; &nbsp;
+      <i class="fa-brands fa-instagram fa-2x"></i>&nbsp;&nbsp;&nbsp;
+      <i class="fa-brands fa-linkedin fa-2x"></i><br><br>
+      </div>
+      </center>
+</div>
+</div>
+  </div>
+</body>
+</html>

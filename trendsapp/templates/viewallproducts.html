@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <style>
+        #o{
+margin:80px;
+}
+       .navbar{
+             background-color:rgb(110, 105, 105);
+            }
+#k{
+            float:left;
+        }
+        #l{
+          background-color:black;
+        color:white;
+        padding:25px;
+
+      }
+                 .i{
+        text-decoration: none;
+        color:white;
+      }
+      .i:hover{color:white;}
+      hr{color:white;}
+
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/4f163060e5.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+      <div>
+    <div id="l">
+      <i id="k" class="fa-solid fa-bars"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft"></i>
+  </div>
+<div class="offcanvas offcanvas-end text-white" style="background-color: rgb(48, 47, 47);" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
+        <div class="offcanvas-header">
+          <h5 id="offcanvasLeftLabel">{{email}}</h5>
+          <button type="button" class="btn-close text-reset bg-light" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+         <ul type="none">
+             <li><a href="http://127.0.0.1:8000/trendsapp/shopprofile/" class="i">Profile</a></li><hr><br>
+             <li><a href="http://127.0.0.1:8000/trendsapp/productupload/" class="i">Upload products</a></li><hr><br>
+                  <li> <a href="http://127.0.0.1:8000/trendsapp/viewallproducts/" class="i">View all products</a></li><hr><br>
+                   <li><a href="http://127.0.0.1:8000/trendsapp/productdisplay/" class="i">View posted products</a></li><hr><br>
+
+                     <li><a href="http://127.0.0.1:8000/trendsapp/shoplogout/" class="i">Logout</a></li><br>
+                  </ul>
+        </div>
+      </div>
+<div id="o" class="row">
+  <!--  n:shop id iteration variable-->
+{% for i,j,k,l in mylist %}
+<div class="col-lg-3 col-md-6 col-sm-12">
+<div class="card m-4" style="width: 18rem;">
+  <img src="{% static i  %}" height="300px" width="200px" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{j}}</h5>
+    <p class="card-text">&#8377 {{k}}</p>
+      <p class="card-text">{{l}}</p>
+</div>
+</div>
+</div>
+{% endfor %}
+</div>
+      </div>
+</body>
+</html>

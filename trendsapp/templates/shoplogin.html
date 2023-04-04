@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <style>
+        .navbar{
+             background-color:rgb(110, 105, 105);
+            }
+   #h{
+        color: black;
+      }
+      #b{
+            height:500px;
+            width:400px;
+            padding:25px;
+            margin:150px 550px;
+        border: 2px;
+        border-radius: 20px;
+        }
+
+ #z{
+     text-decoration: none;
+     color:black
+    }
+
+
+        </style>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/4f163060e5.js" crossorigin="anonymous"></script>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <nav class="navbar navbar-expand-lg fixed-top ">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#" id="h" ><i class="fa-solid fa-leaf"></i>&nbsp;𝐓𝐫𝐞𝐧𝐝𝐬</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" style="color:white"><i class="fa-solid fa-bars"></i></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                <a class="nav-link text-light" href="http://127.0.0.1:8000/trendsapp/home/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="http://127.0.0.1:8000/trendsapp/women/">Womens</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="http://127.0.0.1:8000/trendsapp/men/">Mens</a>
+              </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Login
+                    </a>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="http://127.0.0.1:8000/trendsapp/userlogin/">User login</a></li>
+                  <li><a class="dropdown-item" href="http://127.0.0.1:8000/trendsapp/shoplogin/">Shop login</a></li>
+                    <li><a class="dropdown-item" href="http://127.0.0.1:8000/admin/">Admin login</a></li>
+                </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Register
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="http://127.0.0.1:8000/trendsapp/shopregister/">Shop Register</a></li>
+                      <li><a class="dropdown-item" href="http://127.0.0.1:8000/trendsapp/userregister/">User Register</a></li>
+                    </ul>
+                  </li>
+            </ul>
+            <form class="d-flex">
+           <a  class="nav-link text-light" href="http://127.0.0.1:8000/trendsapp/userprofile/"><i class="fa-solid fa-user fa-1x"></i></a>
+              <a  class="nav-link text-light" href="http://127.0.0.1:8000/trendsapp/cartdisplay/"><i class="fa-solid fa-cart-shopping fa-1x"></i></a>
+              <a  class="nav-link text-light" href="http://127.0.0.1:8000/trendsapp/wishlistdisplay/"><i class="fa-solid fa-heart fa-1x"></i></a>
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" >
+                <button class="btn text-light"><i class=" fa-sharp fa-solid fa-magnifying-glass fa-1x"></i></button>
+
+            </form>
+          </div>
+        </div>
+</nav>
+        <div  id="b" class="shadow"  style="background-color:whitesmoke">
+            {% if messages %}
+    <div  class="alert alert-danger">
+     {% for message in messages %}
+        {{message}}
+    {% endfor %}
+    </div>
+{% endif %}
+          <form method="post">{% csrf_token %}
+            <div class="mb-3">
+              <h3 align="center"><strong>
+                   Shop Login
+                </strong> </h3><br>
+                <label class="form-label text-secondary">Email</label><br>
+                  <div class="input-group mb-3">
+                    <i class="fa-solid fa-user fa-2x"></i>&nbsp;&nbsp;&nbsp;
+                <input type="email" class="form-control" name="email">
+
+              </div>
+              <label class="form-label text-secondary">Password</label><br>
+              <div class="input-group mb-3">
+                <i class="fa-solid fa-lock fa-2x"></i>&nbsp;&nbsp;&nbsp;
+            <input type="password" class="form-control" name="password">
+
+          </div>
+          <br>
+              <center>
+              <div class="mb-3">
+              <a id="z" href="#">Forgot Password?</a>
+          <br>
+          <br>
+          <label>Not an user?</label>&nbsp;&nbsp;&nbsp;<a href="http://127.0.0.1:8000/trendsapp/shopregister/" class="text-secondary" style="text-decoration:none">Sign up</a>
+          <br><br>
+                <button type="submit" class="btn" style="background-color:rgb(110, 105, 105);color:white">Login</button>
+              </div>
+
+            </center>
+            </div>
+          </form>
+           </div>
+    </div>
+
+</body>
+</html>
