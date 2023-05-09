@@ -80,22 +80,65 @@
         <input type="number" class="form-control" name="productprice" value="{{a.productprice}}">
       </div>
           <div class="mb-3">
-        <label class="form-label text-secondary">Type</label><br>
-        &nbsp;&nbsp;&nbsp;<input type="radio"  value="{{a.producttype}}" name="producttype">&nbsp;<label class="form-label text-secondary">Women</label><br>
-         &nbsp;&nbsp;&nbsp;<input type="radio" value="{{a.producttype}}" name="producttype">&nbsp;<label class="form-label text-secondary">Men</label>
+        <label class="form-label text-secondary">Type</label>
+  <select class="form-control" name="producttype">
+          {% if a.producttype == 'Women'%}
+                 <option selected>Women</option>
+        {% else %}
+            <option>Women</option>
+        {% endif %}
+                  {% if a.producttype == 'Men'%}
+                 <option selected>Men</option>
+        {% else %}
+            <option>Men</option>
+        {% endif %}
+               </select>
       </div>
          <div class="mb-3">
         <label class="form-label text-secondary">Category</label><br>
              <select class="form-control" name="category">
    <option>--Select category--</option>
-  <option value="{{a.category}}">Women clothing</option>
-  <option value="{{a.category}}">Women watches</option>
-  <option value="{{a.category}}">Women shoes</option>
-  <option value="{{a.category}}">Women bags</option>
-  <option value="{{a.category}}">Men clothing</option>
-  <option value="{{a.category}}">Men watches</option>
-  <option value="{{a.category}}">Men shoes</option>
-  <option value="{{a.category}}">Men bags</option>
+                    {% if a.category == 'Women clothing'%}
+                 <option selected>Women clothing</option>
+        {% else %}
+            <option>Women clothing</option>
+        {% endif %}
+                   {% if a.category == 'Women watch'%}
+                 <option selected>Women watch</option>
+        {% else %}
+            <option>Women watch</option>
+        {% endif %}
+                      {% if a.category == 'Women shoe'%}
+                 <option selected>Women shoe</option>
+        {% else %}
+            <option>Women shoe</option>
+        {% endif %}
+                     {% if a.category == 'Women bag'%}
+                 <option selected>Women bag</option>
+        {% else %}
+            <option>Women bag</option>
+        {% endif %}
+                    {% if a.category == 'Men clothing'%}
+                 <option selected>Men clothing</option>
+        {% else %}
+            <option>Men clothing</option>
+        {% endif %}
+
+                     {% if a.category == 'Men watch'%}
+                 <option selected>Men watch</option>
+        {% else %}
+            <option>Men watch</option>
+        {% endif %}
+                 {% if a.category == 'Men shoe'%}
+                 <option selected>Men shoe</option>
+        {% else %}
+            <option>Men shoe</option>
+        {% endif %}
+                 {% if a.category == 'Men bag'%}
+                 <option selected>Men bag</option>
+        {% else %}
+            <option>Men bag</option>
+        {% endif %}
 </select>
       </div>
  <div class="mb-3">

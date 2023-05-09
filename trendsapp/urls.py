@@ -3,7 +3,6 @@ from.views import *
 
 
 urlpatterns=[
-    path('index/',index),
     path('shopregister/',shopregister),
     path('shoplogin/',shoplogin),
     path('shopprofile/',shopprofile),

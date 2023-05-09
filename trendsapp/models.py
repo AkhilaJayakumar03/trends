@@ -13,18 +13,18 @@ class shopregmodel(models.Model):
 
 class productupmodel(models.Model):
     Category = (
-        ('womenclothing', 'Women clothing'),
-        ('womenwatch', 'Women watch'),
-        ('womenshoe', 'Women shoe'),
-        ('womenbag', 'Women bag'),
-        ('menclothing', 'Men clothing'),
-        ('menwatch', 'Men watch'),
-        ('menshoe', 'Men shoe'),
-        ('menbag', 'Men bag'),
+        ('Women clothing', 'Women clothing'),
+        ('Women watch', 'Women watch'),
+        ('Women shoe', 'Women shoe'),
+        ('Women bag', 'Women bag'),
+        ('Men clothing', 'Men clothing'),
+        ('Men watch', 'Men watch'),
+        ('Men shoe', 'Men shoe'),
+        ('Men bag', 'Men bag'),
     )
     Gendertype = (
-        ('women', 'Women'),
-        ('men', 'Men'),
+        ('Women', 'Women'),
+        ('Wen', 'Men'),
     )
     shopid = models.IntegerField()
     productname=models.CharField(max_length=50)
