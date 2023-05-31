@@ -111,6 +111,13 @@ margin:80px;
         </div>
       </div>
 <div id="o" class="row">
+    {% if messages %}
+    <div  class="alert alert-dark">
+     {% for message in messages %}
+        {{message}}
+    {% endfor %}
+    </div>
+{% endif %}
 {% for i,j,k,l,m,n in mylist %}
     {% if usid == n %}
 <div class="col-lg-4 col-md-8 col-sm-12">

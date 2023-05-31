@@ -83,8 +83,8 @@
         </div>
 </nav>
         <div  id="b" class="shadow"  style="background-color:whitesmoke">
-            {% if messages %}
-    <div  class="alert alert-danger">
+    {% if messages %}
+    <div  class="alert alert-dark">
      {% for message in messages %}
         {{message}}
     {% endfor %}

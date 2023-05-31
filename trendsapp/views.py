@@ -5,6 +5,7 @@ import datetime
 from datetime import timedelta
 from django.contrib import messages
 from django.contrib.auth import authenticate, logout
+from django.contrib.auth.decorators import login_required
 
 from django.core.mail import send_mail
 from django.http import HttpResponse
@@ -32,7 +33,14 @@ def shopregister(request):
             cp=a.cleaned_data["confirmpassword"]
             if ps==cp:
                 b=shopregmodel(shopname=sn,shopid=sid,location=lt,email=em,password=ps)
+                if shopregmodel.objects.filter(shopname=sn).first():
+                    messages.success(request, "shop already registered...")
+                    return redirect(shopregister)
+                elif shopregmodel.objects.filter(shopid=sid).first():
+                    messages.success(request, "shop already registered...")
+                    return redirect(shopregister)
                 b.save()
+                messages.success(request, "Successfully registered...Now you can login...")
                 return redirect(shoplogin)
             else:
                 messages.success(request,"Password doesn't match")
@@ -55,7 +63,11 @@ def shoplogin(request):
                     return redirect(shopprofile)
             else:
                 messages.success(request,"Login failed")
+        else:
+            messages.success(request, "Please enter password")
     return render(request,"shoplogin.html")
+
+
 
 def shopprofile(request):
     email=request.session['email']
@@ -75,6 +87,7 @@ def productupload(request):
             pm=a.cleaned_data["productimage"]
             b=productupmodel(productname=pn,productprice=pr,producttype=ty,category=ct,description=ds,productimage=pm,shopid=id)
             b.save()
+            messages.success(request, "product upload success......")
             return redirect(productdisplay)
         else:
             messages.success(request,"product upload failed")
@@ -110,6 +123,7 @@ def productdisplay(request):
 def productdelete(request,id):
     a=productupmodel.objects.get(id=id)
     a.delete()
+    messages.success(request, "product deleted successfully...")
     return redirect(productdisplay)
 
 def productedit(request,id):
@@ -126,6 +140,7 @@ def productedit(request,id):
         a.category=request.POST.get('category')
         a.description=request.POST.get('description')
         a.save()
+        messages.success(request, "product updated")
         return redirect(productdisplay)
     return render(request,"productedit.html",{'a':a,'im':im})
 
@@ -175,8 +190,6 @@ def userregister(request):
         return render(request,"success.html")
     return render(request,"userregister.html")
 
-
-
 def send_mail_reg(email,auth_token):
     subject='Your account has been verified'
     message=f'Click the link to verify your account http://127.0.0.1:8000/trendsapp/verify/{auth_token}'
@@ -206,7 +219,6 @@ def userlogin(request):
         password=request.POST.get("password")
         request.session['username'] = username
         user_obj=User.objects.filter(username=username).first()
-        request.session['id'] = user_obj.id
         if user_obj is None:
             messages.success(request,'user not found')
             return redirect(userlogin)
@@ -218,6 +230,7 @@ def userlogin(request):
         if user is None:
             messages.success(request,'username or password is wrong')
             return redirect(userlogin)
+        request.session['id'] = user_obj.id
         return redirect(userprofile)
     return render(request,"userlogin.html")
 
@@ -255,7 +268,7 @@ def menbag(request):
     dscp = []
     pdimg = []
     pdid = []
-    a=productupmodel.objects.filter(category='Menbags').values()
+    a=productupmodel.objects.filter(category='Men bag').values()
     for i in a:
         pn = i.get('productname')
         pdnm.append(pn)
@@ -276,7 +289,7 @@ def menclothing(request):
     dscp = []
     pdimg = []
     pdid = []
-    a=productupmodel.objects.filter(category='Menclothing').values()
+    a=productupmodel.objects.filter(category='Men clothing').values()
     for i in a:
         pn = i.get('productname')
         pdnm.append(pn)
@@ -297,7 +310,7 @@ def menwatch(request):
     dscp = []
     pdimg = []
     pdid = []
-    a=productupmodel.objects.filter(category='Menwatches').values()
+    a=productupmodel.objects.filter(category='Men watch').values()
     for i in a:
         pn = i.get('productname')
         pdnm.append(pn)
@@ -318,7 +331,7 @@ def menshoe(request):
     dscp = []
     pdimg = []
     pdid = []
-    a=productupmodel.objects.filter(category='Menshoes').values()
+    a=productupmodel.objects.filter(category='Men shoe').values()
     for i in a:
         pn = i.get('productname')
         pdnm.append(pn)
@@ -362,7 +375,7 @@ def womenwatch(request):
     dscp = []
     pdimg = []
     pdid = []
-    a=productupmodel.objects.filter(category='Womenwatches').values()
+    a=productupmodel.objects.filter(category='Women watch').values()
     for i in a:
         pn = i.get('productname')
         pdnm.append(pn)
@@ -383,7 +396,7 @@ def womenclothing(request):
     dscp = []
     pdimg = []
     pdid = []
-    a=productupmodel.objects.filter(category='Womenclothing').values()
+    a=productupmodel.objects.filter(category='Women clothing').values()
     for i in a:
         pn = i.get('productname')
         pdnm.append(pn)
@@ -405,7 +418,7 @@ def womenshoe(request):
     dscp = []
     pdimg = []
     pdid = []
-    a=productupmodel.objects.filter(category='Womenshoes').values()
+    a=productupmodel.objects.filter(category='Women shoe').values()
     for i in a:
         pn = i.get('productname')
         pdnm.append(pn)
@@ -426,7 +439,7 @@ def womenbag(request):
     dscp = []
     pdimg = []
     pdid = []
-    a=productupmodel.objects.filter(category='Womenbags').values()
+    a=productupmodel.objects.filter(category='Women bag').values()
     for i in a:
         pn = i.get('productname')
         pdnm.append(pn)
@@ -487,10 +500,11 @@ def viewproducts(request):
 def addtocart(request,id):
     a=productupmodel.objects.get(id=id)
     c = request.session['id']
-    if cart.objects.filter(productname=a.productname):
+    if cart.objects.filter(userid=c,productname=a.productname):
         return render(request,"itemalreadyincart.html")
     b=cart(productname=a.productname,productprice=a.productprice,description=a.description,productimage=a.productimage,userid=c)
     b.save()
+    messages.success(request, "added to cart successfully...")
     return redirect(cartdisplay)
 
 def cartdisplay(request):
@@ -521,17 +535,19 @@ def cartdisplay(request):
 def cartitemremove(request,id):
     a=cart.objects.get(id=id)
     a.delete()
+    messages.success(request, "product removed from cart")
     return redirect(cartdisplay)
 
 
 def addtowishlist(request,id):
     a=productupmodel.objects.get(id=id)
     c = request.session['id']
-    if wishlist.objects.filter(productname=a.productname):
+    if wishlist.objects.filter(userid=c,productname=a.productname):
         return render(request,"itemalreadyinwishlist.html")
     else:
         b=wishlist(productname=a.productname,productprice=a.productprice,description=a.description,productimage=a.productimage,userid=c)
         b.save()
+        messages.success(request, "added to wishlist successfully...")
         return redirect(wishlistdisplay)
 
 def wishlistdisplay(request):
@@ -562,16 +578,18 @@ def wishlistdisplay(request):
 def wishitemremove(request,id):
     a=wishlist.objects.get(id=id)
     a.delete()
+    messages.success(request, "product removed from wishlist")
     return redirect(wishlistdisplay)
 
 def wishtocart(request,id):
     c = request.session['id']
     a=wishlist.objects.get(id=id)
-    if cart.objects.filter(productname=a.productname):
+    if cart.objects.filter(userid=c,productname=a.productname):
         return render(request,"itemalreadyincart.html")
     else:
         b=cart(productname=a.productname,productprice=a.productprice,description=a.description,productimage=a.productimage,userid=c)
         b.save()
+        messages.success(request, "product added to cart successfully...")
         return redirect(cartdisplay)
 
 

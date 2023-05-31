@@ -50,6 +50,13 @@ margin:100px;
         </div>
       </div>
 <div id="o" class="row">
+        {% if messages %}
+    <div  class="alert alert-dark">
+     {% for message in messages %}
+        {{message}}
+    {% endfor %}
+    </div>
+{% endif %}
   <!--  n:shop id iteration variable-->
 {% for i,j,k,l,m,n in mylist %}
     {% if shpid == n %}
