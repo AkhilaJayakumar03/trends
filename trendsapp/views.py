@@ -14,6 +14,7 @@ from.forms import *
 from.models import *
 from django.contrib.auth.models import User
 from trendsproject.settings import EMAIL_HOST_USER
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -62,7 +63,7 @@ def shoplogin(request):
                     request.session['id'] = i.id
                     return redirect(shopprofile)
             else:
-                messages.success(request,"Login failed")
+                messages.success(request,"email or password wrong")
         else:
             messages.success(request, "Please enter password")
     return render(request,"shoplogin.html")
@@ -584,13 +585,13 @@ def wishitemremove(request,id):
 def wishtocart(request,id):
     c = request.session['id']
     a=wishlist.objects.get(id=id)
-    if cart.objects.filter(userid=c,productname=a.productname):
+    if cart.objects.filter(productname=a.productname):
         return render(request,"itemalreadyincart.html")
     else:
         b=cart(productname=a.productname,productprice=a.productprice,description=a.description,productimage=a.productimage,userid=c)
         b.save()
         messages.success(request, "product added to cart successfully...")
-        return redirect(cartdisplay)
+        return redirect(wishlistdisplay)
 
 
 
